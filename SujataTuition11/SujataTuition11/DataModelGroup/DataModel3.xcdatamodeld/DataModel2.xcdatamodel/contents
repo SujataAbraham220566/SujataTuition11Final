@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22G90" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Sessions" representedClassName="Sessions" syncable="YES">
+        <attribute name="grade" optional="YES" attributeType="String"/>
+        <attribute name="sessionid" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="sessionno" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="studentid" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="subject" optional="YES" attributeType="String"/>
+        <relationship name="sessionToStudent" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Students" inverseName="studentToSession" inverseEntity="Students"/>
+    </entity>
+    <entity name="Students" representedClassName="Students" syncable="YES">
+        <attribute name="doj" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="phone" optional="YES" attributeType="String"/>
+        <attribute name="photo" attributeType="Transformable"/>
+        <attribute name="studentid" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="studentToSession" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sessions" inverseName="sessionToStudent" inverseEntity="Sessions"/>
+    </entity>
+</model>
